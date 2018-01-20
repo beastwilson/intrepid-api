@@ -1,0 +1,29 @@
+{
+  "name": "intrepid-api",
+  "version": "1.0.0",
+  "description": "Library for intrepid's hackathon API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ArcticZeroo",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beastwilson/intrepid-api.git"
+  },
+  "keywords": [
+    "intrepid",
+    "hackathon",
+    "intrepid",
+    "api",
+    "tesla"
+  ],
+  "bugs": {
+    "url": "https://github.com/beastwilson/intrepid-api/issues"
+  },
+  "homepage": "https://github.com/beastwilson/intrepid-api#readme",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
+}
