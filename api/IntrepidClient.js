@@ -3,7 +3,7 @@ const request = require('request');
 const config = require('../config');
 
 class IntrepidClient {
-    consttuctor(apiKey) {
+    constructor(apiKey) {
         this.apiKey = apiKey;
     }
 
