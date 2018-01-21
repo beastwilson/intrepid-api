@@ -17,6 +17,22 @@ class IntrepidClient {
         return config.BASE_URL + config.DATA_URL;
     }
 
+    static _getError(err, res, body) {
+        if (body.error && typeof body.error !== 'object') {
+            return new Error(body.error);
+        }
+
+        if (res.statusCode.toString()[0] !== '2') {
+            return new Error(`Status Code ${res.statusCode}`);
+        }
+
+        if (typeof err === 'object') {
+            return err;
+        }
+
+        return new Error(err.toString());
+    }
+
     action(command) {
         return new Promise((resolve, reject) => {
             request.post({
@@ -26,13 +42,13 @@ class IntrepidClient {
                 form: { command }
             }, (err, res, body) => {
                 if (err != null) {
-                    reject((typeof err !== 'object') ? new Error(err) : err);
+                    reject(IntrepidClient._getError(err, res, body));
                     return;
                 }
 
                 // if the request was not a success for some reason
                 if (res.statusCode.toString()[0] !== '2') {
-                    reject(new Error('Status Code ' + res.statusCode));
+                    reject(IntrepidClient._getError(err, res, body));
                     return;
                 }
 
