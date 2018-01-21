@@ -1,5 +1,7 @@
 const request = require('request');
 
+const config = require('../config');
+
 class IntrepidClient {
     consttuctor(apiKey) {
         this.apiKey = apiKey;
@@ -11,14 +13,14 @@ class IntrepidClient {
         }
     }
 
-    _getRequestUrl(command) {
-
+    static _getRequestUrl() {
+        return config.BASE_URL + config.DATA_URL;
     }
 
     action(command) {
         return new Promise((resolve, reject) => {
             request.post({
-                uri: this._getRequestUrl(command),
+                uri: IntrepidClient._getRequestUrl(),
                 json: true,
                 headers: this._getHeaders(),
                 form: { command }
